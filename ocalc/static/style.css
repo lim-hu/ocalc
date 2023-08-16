@@ -1,0 +1,82 @@
+body{
+    
+    background-image: url("oblivion-bg.jpg");
+    color: rgb(230, 230, 230);
+}
+
+.container{
+    width: 70%;
+    min-width: 70%;
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #fff3d9;
+}
+
+.table-main{
+    color: #503700;
+    background-color: #fff3d9;
+    margin: 0 auto;
+    /* border: #C5C29E 1px solid;  */
+    text-align: center;
+    min-width: 70%;
+    max-width: 100%;
+}
+
+.table-title{
+    text-shadow: black 0px 0px 2px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.race-btn{
+    background-color: #fff3d9;
+    color: #503700;
+    font-weight: bold;
+    text-decoration: none;
+    width: 110px;
+    text-align: center;
+    word-break: keep-all;
+    border: none;
+}
+
+.item-btn{
+    background-color:#fff3d9;
+    color: rgb(0, 0, 0);
+    /* font-weight: bold; */
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    word-break: keep-all;
+    /* border: #C5C29E 1px solid; */
+    border: none;
+}
+.skill-box{
+    text-align: left;
+    height: 26px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-input{
+    width: 20px;
+    text-align: center;
+    color: black;
+    background-color: #fff3d9;
+    border: 1px gray solid;
+}
+
+.main-race{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.race-td{
+    border: #C5C29E 1px solid; 
+}
+
+/* tr{
+    border: white 1px solid; 
+} */
+

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oblivion Calculator</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+
+    
+    <table class="table-main">
+        <tr><td colspan="11" class="table-title">TES IV: Oblivion Calculator</td></tr>
+        <form action="/" method="POST">
+            <tr>
+
+                <td colspan="2" class="race-td">
+                    <span>
+                        <select class="race-btn" name="race" id="race">
+                            <option value="{{ character.race }}" selected hidden>{{ character.race }}</option>
+                            {% for race in race_selection %}
+                                <option value="{{ race }}">{{ race }}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                </td>
+
+                <td colspan="2" class="race-td">
+                    <span>
+                        <select class="race-btn" name="gender" id="gender">
+                            <option value="{{ character.gender }}" selected hidden>{{ character.gender }}</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+
+                        </select>
+                    </span>
+                </td>
+
+                <td colspan="3" class="race-td">
+                    <span>
+                        <select class="race-btn" name="class" id="class">
+                            <option value="{{ character.class_ }}" selected hidden>{{ character.class_ }}</option>
+                            {% for class in classes %}
+                                <option value="{{ class.name }}">{{ class.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                </td>
+
+                <td class="race-td" colspan="3">
+                    <span><button class="race-btn" id="Update" name="Update" value="Update">Update</button></span>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="tr-attributes">
+                <td class="skill-box"><span>Blade: {{ character.blade }}</span><span>+<input class="skill-input" type="text" name="Blade" value="{{ add_data.blade }}"></span></td>
+                <td class="race-td" colspan="2"><span>Birthsign: </span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="birthsign" id="birthsign">
+                                <option value="{{ character.birthsign }}" selected hidden>{{ character.birthsign }}</option>
+                                {% for birthsign in birthsigns %}
+                                    <option value="{{ birthsign.name }}">{{ birthsign.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+
+                <td class="race-td" colspan="2"><span>Helmet:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="helmet" id="helmet">
+                                <option value="{{ character.helmet }}" selected hidden>{{ character.helmet }}</option>
+                                {% for helmet in helmets %}
+                                    <option value="{{ helmet.name }}">{{ helmet.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                
+                <td class="race-td" colspan="2"><span>Necklace:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="necklace" id="necklace">
+                                <option value="{{ character.necklace }}" selected hidden>{{ character.necklace }}</option>
+                                {% for necklace in necklaces %}
+                                    <option value="{{ necklace.name }}">{{ necklace.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="td-attr" colspan="1">STR: {{ character.strength }} <span>+<input class="skill-input" type="text" name="STR" value="{{ add_data.strength }}"></span></td>
+                <td class="td-attr" colspan="1">AGI: {{ character.agility }} <span>+<input class="skill-input" type="text" name="AGI" value="{{ add_data.agility }}"></span></td>
+                <td class="td-attr" colspan="1">WIL: {{ character.willpower }} <span>+<input class="skill-input" type="text" name="WIL" value="{{ add_data.willpower }}"></span></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Blunt: {{ character.blunt }}</span><span>+<input class="skill-input" type="text" name="Blunt" value="{{ add_data.blunt }}"></span></td>
+                <td class="race-td" colspan="2"><span>Main hand:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="mainhand" id="mainhand">
+                                <option value="{{ character.mainhand }}" selected hidden>{{ character.mainhand }}</option>
+                                {% for mainhand in mainhands %}
+                                    <option value="{{ mainhand.name }}">{{ mainhand.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="race-td" colspan="2"><span>Cuirass:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="cuirass" id="cuirass">
+                                <option value="{{ character.cuirass }}" selected hidden>{{ character.cuirass }}</option>
+                                {% for cuirass in cuirasses %}
+                                    <option value="{{ cuirass.name }}">{{ cuirass.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="race-td" colspan="2"><span>Off hand:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="offhand" id="offhand">
+                                <option value="{{ character.offhand }}" selected hidden>{{ character.offhand }}</option>
+                                {% for offhand in offhands %}
+                                    <option value="{{ offhand.name }}">{{ offhand.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="td-attr" colspan="1">END: {{ character.endurance }} <span>+<input class="skill-input" type="text" name="END" value="{{ add_data.endurance }}"></span></td>
+                <td class="td-attr" colspan="1">SPD: {{ character.speed }} <span>+<input class="skill-input" type="text" name="SPD" value="{{ add_data.speed }}"></span></td>
+                <td class="td-attr" colspan="1">INT: {{ character.intelligence }} <span>+<input class="skill-input" type="text" name="INT" value="{{ add_data.intelligence }}"></span></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Hand To Hand: {{ character.hand_to_hand }}</span><span>+<input class="skill-input" type="text" name="Hand To Hand" value="{{ add_data.hand_to_hand }}"></span></td>
+                <td class="race-td" colspan="2"><span>Ring:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="ring1" id="ring1">
+                                <option value="{{ character.ring1 }}" selected hidden>{{ character.ring1 }}</option>
+                                {% for ring in rings %}
+                                    <option value="{{ ring.name }}">{{ ring.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="race-td" colspan="2"><span>Boots:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="boot" id="boot">
+                                <option value="{{ character.boot }}" selected hidden>{{ character.boot }}</option>
+                                {% for boot in boots %}
+                                    <option value="{{ boot.name }}">{{ boot.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="race-td" colspan="2"><span>Ring:</span>
+                    <span>
+                        <div>
+                            <select class="item-btn" name="ring2" id="ring2">
+                                <option value="{{ character.ring2 }}" selected hidden>{{ character.ring2 }}</option>
+                                {% for ring in rings %}
+                                    <option value="{{ ring.name }}">{{ ring.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </span>
+                </td>
+                <td class="td-attr" colspan="1">PER: {{ character.personality }} <span>+<input class="skill-input" type="text" name="PER" value="{{ add_data.personality }}"></span></td>
+                <td class="td-attr" colspan="1">Luck: {{ character.luck }} <span>+<input class="skill-input" type="text" name="LCK" value="{{ add_data.luck }}"></span></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Armorer: {{ character.armorer }}</span><span>+<input class="skill-input" type="text" name="Armorer" value="{{ add_data.armorer }}"></span></td>
+                <td colspan="6" class="main-race">{{ character.race }}, {{ character.gender }}, {{ character.class_ }}</td>
+                <td>Health: {{ character.health }}</td>
+                <td>Magicka: {{ character.magicka }}</td>
+                <td>Fatigue: {{ character.fatigue }}</td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Block: {{ character.block }}</span><span>+<input class="skill-input" type="text" name="Block" value="{{ add_data.block }}"></span></td>
+                <td rowspan="2" colspan="2">Weapon Rating: {{ character.damage }}</td>
+                <td rowspan="2" colspan="2">Fire Resistance: {{ character.fire_res }}%</td>
+                <td rowspan="2" colspan="2">Fire Weakness: {{ character.fire_weak }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Heavy Armor: {{ character.heavy_armor }}</span><span>+<input class="skill-input" type="text" name="Heavy Armor" value="{{ add_data.heavy_armor }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Athletics: {{ character.athletics }}</span><span>+<input class="skill-input" type="text" name="Athletics" value="{{ add_data.athletics }}"></span></td>
+                <td rowspan="2" colspan="2">Armor Rating: {{ character.rating }}</td>
+                <td rowspan="2" colspan="2">Frost Resist: {{ character.cold_res }}%</td>
+                <td rowspan="2" colspan="2">Frost Weakness: {{ character.cold_weak }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Acrobatics: {{ character.acrobatics }}</span><span>+<input class="skill-input" type="text" name="Acrobatics" value="{{ add_data.acrobatics }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Light Armor: {{ character.light_armor }}</span><span>+<input class="skill-input" type="text" name="Light Armor" value="{{ add_data.light_armor }}"></span></td>
+                <td rowspan="2" colspan="2">Fire Damage: {{ character.fire_dmg }}</td>
+                <td rowspan="2" colspan="2">Shock Resist: {{ character.shock_res }}%</td>
+                <td rowspan="2" colspan="2">Shock Weakness: {{ character.shock_weak }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Security: {{ character.security }}</span><span>+<input class="skill-input" type="text" name="Security" value="{{ add_data.security }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Sneak: {{ character.sneak }}</span><span>+<input class="skill-input" type="text" name="Sneak" value="{{ add_data.sneak }}"></span></td>
+                <td rowspan="2" colspan="2">Frost Damage: {{ character.cold_dmg }}</td>
+                <td rowspan="2" colspan="2">Magic Resistance: {{ character.cold_res }}%</td>
+                <td rowspan="2" colspan="2">Poison Weakness: {{ character.poison_weak }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Marksman: {{ character.marksman }}</span><span>+<input class="skill-input" type="text" name="Marksman" value="{{ add_data.marksman }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Mercantile: {{ character.mercantile }}</span><span>+<input class="skill-input" type="text" name="Mercantile" value="{{ add_data.mercantile }}"></span></td>
+                <td rowspan="2" colspan="2" rowspan="2">Shock Damage: {{ character.shock_dmg }}</td>
+                <td rowspan="2" colspan="2">Poison Resistance: {{ character.poison_res }}%</td>
+                <td rowspan="2" colspan="2">Reflect Damage: {{ character.reflect_dmg }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Speechcraft: {{ character.speechcraft }}</span><span>+<input class="skill-input" type="text" name="Speechcraft" value="{{ add_data.speechcraft }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Illusion: {{ character.illusion }}</span><span>+<input class="skill-input" type="text" name="Illusion" value="{{ add_data.illusion }}"></span></td>
+                <td rowspan="2" colspan="2">Poison Damage: {{ character.poison_dmg }}</td>
+                <td rowspan="2" colspan="2">Disease Resistance: {{ character.disease_res }}%</td>
+                <td rowspan="2" colspan="2">Reflect Spell: {{ character.reflect_spell }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Alchemy: {{ character.alchemy }}</span><span>+<input class="skill-input" type="text" name="Alchemy" value="{{ add_data.alchemy }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Conjuration: {{ character.conjuration }}</span><span>+<input class="skill-input" type="text" name="Conjuration" value="{{ add_data.conjuration }}"></span></td>
+                <td rowspan="2" colspan="2">Absorb Life: {{ character.absorb_life }}</td>
+                <td rowspan="2" colspan="2">Paralysis Resistance: {{ character.paralysis_res }}%</td>
+                <td rowspan="2" colspan="2">Spell Absorbtion: {{ character.spell_absorption }}%</td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Mysticism: {{ character.mysticism }}</span><span>+<input class="skill-input" type="text" name="Mysticism" value="{{ add_data.mysticism }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Alteration: {{ character.alteration }}</span><span>+<input class="skill-input" type="text" name="Alteration" value="{{ add_data.alteration }}"></span></td>
+                <td rowspan="2" colspan="2"></td>
+                <td rowspan="2" colspan="2">Normal Weapon Resistance: {{ character.normal_weapon_res }}%</td> 
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Destruction: {{ character.destruction }}</span><span>+<input class="skill-input" type="text" name="Destruction" value="{{ add_data.destruction }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="skill-box"><span>Restoration: {{ character.restoration }}</span><span>+<input class="skill-input" type="text" name="Restoration" value="{{ add_data.restoration }}"></span></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+        </form>           
+    </table>
+</div>
+
+</body>
+</html>
